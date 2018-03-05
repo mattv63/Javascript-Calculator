@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Javascript Calculator</title>
+</head>
+
+<body>
+  <div id=calcBody>
+    <div id=displayHolder>
+      <div id=display>
+        <div id=equationHolder>
+        </div>
+        <div id=numberHolder>
+          <h1 id=numDisplay></h1>
+        </div>
+      </div>
+    </div>
+    <div id=numButtonHolder>
+      <button type="button" class="numButton" id="seven">7</button>
+      <button type="button" class="numButton" id="eight">8</button>
+      <button type="button" class="numButton" id="nine">9</button>
+      <button type="button" class="numButton" id="divide">/</button>
+      <button type="button" class="numButton" id="four">4</button>
+      <button type="button" class="numButton" id="five">5</button>
+      <button type="button" class="numButton" id="six">6</button>
+      <button type="button" class="numButton" id="multiply">x</button>
+      <button type="button" class="numButton" id="one">1</button>
+      <button type="button" class="numButton" id="two">2</button>
+      <button type="button" class="numButton" id="three">3</button>
+      <button type="button" class="numButton" id="subtract">-</button>
+      <button type="button" class="numButton" id="zero">0</button>
+      <button type="button" class="numButton" id="decimal">.</button>
+      <button type="button" class="numButton" id="equals">=</button>
+      <button type="button" class="numButton" id="add">+</button>
+      <button type="button" class="numButton" id="clear">C</button>
+      <button type="button" class="numButton" id="delete">Del<button>
+    </div>
+  </div>
+
+<script>
+
+  function operate(operation, x ,y){
+    let result;
+    if (operation == "+"){
+      result = add(x, y);
+    }
+    else if (operation == "-"){
+      result = subtract(x, y);
+    }
+    else if (operation == "*"){
+      result = multiply(x, y);
+    }
+    else if (operation == "/"){
+      result = divide(x, y);
+    }
+    return result;
+  }
+
+  function add(x, y){
+    return x + y;
+  }
+
+  function subtract(x, y){
+    return x - y;
+  }
+
+  function multiply(x, y){
+    let cf = 10;
+    return ((x * cf) * (y * cf) / (cf * cf)).toPrecision(9);
+  }
+
+  function divide(x, y){
+    return (x/y).toPrecision(9);
+  }
+
+  let currentNum = "";
+  let lastNum = "";
+  let operator = "";
+  let result;
+  let hasDecimal = 0;
+  const numDisplay = document.querySelector("#numDisplay");
+  const equationDisplay = document.querySelector("#equationHolder");
+  const one = document.querySelector("#one");
+  const two = document.querySelector("#two");
+  const three = document.querySelector("#three");
+  const four = document.querySelector("#four");
+  const five = document.querySelector("#five");
+  const six = document.querySelector("#six");
+  const seven = document.querySelector("#seven");
+  const eight = document.querySelector("#eight");
+  const nine = document.querySelector("#nine");
+  const zero = document.querySelector("#zero");
+  const plus = document.querySelector("#add");
+  const minus = document.querySelector("#subtract");
+  const times = document.querySelector("#multiply");
+  const dividedBy = document.querySelector("#divide");
+  const equals = document.querySelector("#equals");
+  const decimal = document.querySelector("#decimal");
+  const clear = document.querySelector("#clear");
+  const del = document.querySelector("#delete");
+  one.addEventListener('click', (e) => {
+    numDisplay.textContent += "1";
+    currentNum += "1";
+  })
+  two.addEventListener('click', (e) => {
+    numDisplay.textContent += "2";
+    currentNum += "2";
+  })
+  three.addEventListener('click', (e) => {
+    numDisplay.textContent += "3";
+    currentNum += "3";
+  })
+  four.addEventListener('click', (e) => {
+    numDisplay.textContent += "4";
+    currentNum += "4";
+  })
+  five.addEventListener('click', (e) => {
+    numDisplay.textContent += "5";
+    currentNum += "5";
+  })
+  six.addEventListener('click', (e) => {
+    numDisplay.textContent += "6";
+    currentNum += "6";
+  })
+  seven.addEventListener('click', (e) => {
+    numDisplay.textContent += "7";
+    currentNum += "7";
+  })
+  eight.addEventListener('click', (e) => {
+    numDisplay.textContent += "8";
+    currentNum += "8";
+  })
+  nine.addEventListener('click', (e) => {
+    numDisplay.textContent += "9";
+    currentNum += "9";
+  })
+  zero.addEventListener('click', (e) => {
+    numDisplay.textContent += "0";
+    currentNum += "0";
+  })
+  decimal.addEventListener('click', (e) => {
+    if (hasDecimal == 0){
+      numDisplay.textContent += ".";
+      currentNum += ".";
+      hasDecimal = 1;
+    }
+  })
+  plus.addEventListener('click', (e) => {
+    if (currentNum != ""){
+      if (lastNum != ""){
+        currentNum = operate(operator, parseInt(lastNum), parseInt(currentNum));
+      }
+      operator = "+";
+      lastNum = currentNum;
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += currentNum + " " + operator;
+      currentNum = "";
+      numDisplay.textContent = "";
+      hasDecimal = 0;
+    }
+  })
+  minus.addEventListener('click', (e) => {
+    if (currentNum != ""){
+      if (lastNum != ""){
+        currentNum = operate(operator, parseInt(lastNum), parseInt(currentNum));
+      }
+      operator = "-";
+      lastNum = currentNum;
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += currentNum + " " + operator;
+      currentNum = "";
+      numDisplay.textContent = "";
+      hasDecimal = 0;
+    }
+  })
+  times.addEventListener('click', (e) => {
+    if (currentNum != ""){
+      if (lastNum != ""){
+        currentNum = operate(operator, parseInt(lastNum), parseInt(currentNum));
+      }
+      operator = "*";
+      lastNum = currentNum;
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += currentNum + " " + operator;
+      currentNum = "";
+      numDisplay.textContent = "";
+      hasDecimal = 0;
+    }
+  })
+  dividedBy.addEventListener('click', (e) => {
+    if (currentNum != ""){
+      if (lastNum != ""){
+        currentNum = operate(operator, parseInt(lastNum), parseInt(currentNum));
+      }
+      operator = "/";
+      lastNum = currentNum;
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += currentNum + " " + operator;
+      currentNum = "";
+      numDisplay.textContent = "";
+      hasDecimal = 0;
+    }
+  })
+  equals.addEventListener('click', (e) => {
+    if (operator != "" && currentNum != "" && lastNum != ""){
+      result = operate(operator, parseFloat(lastNum), parseFloat(currentNum));
+      if (result > 9999999999){
+        result = 9999999999;
+      }
+      numDisplay.textContent = result;
+      equationDisplay.textContent = lastNum + " " + operator + " " + currentNum;
+      currentNum = result;
+      lastNum = "";
+    }
+  })
+  clear.addEventListener('click', (e) => {
+    currentNum = "";
+    lastNum = "";
+    operator = "";
+    numDisplay.textContent = "";
+    equationDisplay.textContent = "";
+  })
+  del.addEventListener('click', (e) => {
+    currentNum = currentNum.slice(0, -1);
+    numDisplay.textContent = currentNum;
+  })
+
+
+</script>
+</body>
+
+</html>

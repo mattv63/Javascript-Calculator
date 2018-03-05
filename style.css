@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #beffbe;
+}
+
+#calcBody {
+  position: relative;
+  background-color: #d0d0d0;
+  border-radius: 20px;
+  height: 740px;
+  width: 500px;
+  margin-left: 30%;
+  margin-top: .5%;
+  margin-bottom: 1%;
+  padding-top: 1.5%
+}
+
+#displayHolder {
+  background-color: #252525;
+  height: 25%;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+  border-radius: 20px;
+  padding-top: 3%
+}
+
+#display {
+  background-color: #264426;
+  height: 90%;
+  width: 90%;
+  border-radius: 20px;
+  margin-left: 4.5%;
+}
+
+#equationHolder {
+  text-align: right;
+  color: white;
+  background-color: #264426;
+  padding-top: 5%;
+  padding-right: 3%;
+  border-radius: 20px;
+}
+
+#numberHolder {
+  background-color: #264426;
+  color: white;
+  text-align: right;
+  width: 98%;
+  margin-left: 1%;
+  padding-top: 2%;
+}
+
+#numberHolder h1 {
+  font-family: 'Orbitron';
+  background-color: #264426;
+  font-size: 500%;
+}
+
+#numButtonHolder {
+  background-color: #d0d0d0;
+  position: absolute;
+  bottom: 0px;
+  padding-bottom: 4%;
+  padding-left: 4.5%;
+  border-radius: 20px;
+}
+
+.numButton {
+  background-color: #4f4f4f;
+  height: 100px;
+  width: 100px;
+  color: white;
+  border-radius: 20px;
+  font-size: 30px;
+  margin: 1%;
+  border: none;
+}
+
+#equals {
+  background-color: #7a1f1f;
+}
+
+#add, #subtract, #multiply, #divide {
+  background-color: #086708;
+  font-size: 35px;
+}
+
+#clear, #delete {
+  width: 213.5px;
+  height: 50px;
+  background-color: #777777;
+}

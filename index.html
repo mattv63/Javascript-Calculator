@@ -54,6 +54,16 @@
     else if (operation == "/"){
       result = divide(x, y);
     }
+
+    var countDecimals = function (value) {
+      if(Math.floor(value) === value) return 0;
+      return value.toString().split(".")[1].length || 0;
+    }
+
+    if (countDecimals(result) > 9){
+      result = result.toFixed(8);
+      console.log("hello");
+    }
     return result;
   }
 
@@ -66,12 +76,11 @@
   }
 
   function multiply(x, y){
-    let cf = 10;
-    return ((x * cf) * (y * cf) / (cf * cf)).toPrecision(9);
+    return ((x * 10) * (y * 10)) / 100;
   }
 
   function divide(x, y){
-    return (x/y).toPrecision(9);
+    return ((x * 10) / (y * 10));
   }
 
   let currentNum = "";
@@ -100,50 +109,105 @@
   const clear = document.querySelector("#clear");
   const del = document.querySelector("#delete");
   one.addEventListener('click', (e) => {
-    numDisplay.textContent += "1";
-    currentNum += "1";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "1";
+      currentNum += "1";
+    }
   })
   two.addEventListener('click', (e) => {
-    numDisplay.textContent += "2";
-    currentNum += "2";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "2";
+      currentNum += "2";
+    }
   })
   three.addEventListener('click', (e) => {
-    numDisplay.textContent += "3";
-    currentNum += "3";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "3";
+      currentNum += "3";
+    }
   })
   four.addEventListener('click', (e) => {
-    numDisplay.textContent += "4";
-    currentNum += "4";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "4";
+      currentNum += "4";
+    }
   })
   five.addEventListener('click', (e) => {
-    numDisplay.textContent += "5";
-    currentNum += "5";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "5";
+      currentNum += "5";
+    }
   })
   six.addEventListener('click', (e) => {
-    numDisplay.textContent += "6";
-    currentNum += "6";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "6";
+      currentNum += "6";
+    }
   })
   seven.addEventListener('click', (e) => {
-    numDisplay.textContent += "7";
-    currentNum += "7";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "7";
+      currentNum += "7";
+    }
   })
   eight.addEventListener('click', (e) => {
-    numDisplay.textContent += "8";
-    currentNum += "8";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "8";
+      currentNum += "8";
+    }
   })
   nine.addEventListener('click', (e) => {
-    numDisplay.textContent += "9";
-    currentNum += "9";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "9";
+      currentNum += "9";
+    }
   })
   zero.addEventListener('click', (e) => {
-    numDisplay.textContent += "0";
-    currentNum += "0";
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      numDisplay.textContent += "0";
+      currentNum += "0";
+    }
   })
   decimal.addEventListener('click', (e) => {
-    if (hasDecimal == 0){
-      numDisplay.textContent += ".";
-      currentNum += ".";
-      hasDecimal = 1;
+    if (currentNum.length > 9){
+      console.log("Number is too large.")
+    }
+    else {
+      if (hasDecimal == 0){
+        numDisplay.textContent += ".";
+        currentNum += ".";
+        hasDecimal = 1;
+      }
     }
   })
   plus.addEventListener('click', (e) => {
@@ -159,6 +223,12 @@
       numDisplay.textContent = "";
       hasDecimal = 0;
     }
+    else if (lastNum != ""){
+      operator = "+";
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += lastNum + " " + operator;
+      numDisplay.textContent = "";
+    }
   })
   minus.addEventListener('click', (e) => {
     if (currentNum != ""){
@@ -172,6 +242,12 @@
       currentNum = "";
       numDisplay.textContent = "";
       hasDecimal = 0;
+    }
+    else if (lastNum != ""){
+      operator = "-";
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += lastNum + " " + operator;
+      numDisplay.textContent = "";
     }
   })
   times.addEventListener('click', (e) => {
@@ -187,6 +263,12 @@
       numDisplay.textContent = "";
       hasDecimal = 0;
     }
+    else if (lastNum != ""){
+      operator = "*";
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += lastNum + " " + operator;
+      numDisplay.textContent = "";
+    }
   })
   dividedBy.addEventListener('click', (e) => {
     if (currentNum != ""){
@@ -201,6 +283,12 @@
       numDisplay.textContent = "";
       hasDecimal = 0;
     }
+    else if (lastNum != ""){
+      operator = "/";
+      equationDisplay.textContent = "";
+      equationDisplay.textContent += lastNum + " " + operator;
+      numDisplay.textContent = "";
+    }
   })
   equals.addEventListener('click', (e) => {
     if (operator != "" && currentNum != "" && lastNum != ""){
@@ -211,7 +299,6 @@
       numDisplay.textContent = result;
       equationDisplay.textContent = lastNum + " " + operator + " " + currentNum;
       currentNum = result;
-      lastNum = "";
     }
   })
   clear.addEventListener('click', (e) => {

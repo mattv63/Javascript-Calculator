@@ -62,7 +62,6 @@
 
     if (countDecimals(result) > 9){
       result = result.toFixed(8);
-      console.log("hello");
     }
     return result;
   }
@@ -253,7 +252,7 @@
   times.addEventListener('click', (e) => {
     if (currentNum != ""){
       if (lastNum != ""){
-        currentNum = operate(operator, parseInt(lastNum), parseInt(currentNum));
+        currentNum = operate(operator, parseFloat(lastNum), parseFloat(currentNum));
       }
       operator = "*";
       lastNum = currentNum;
@@ -273,7 +272,7 @@
   dividedBy.addEventListener('click', (e) => {
     if (currentNum != ""){
       if (lastNum != ""){
-        currentNum = operate(operator, parseInt(lastNum), parseInt(currentNum));
+        currentNum = operate(operator, parseFloat(lastNum), parseFloat(currentNum));
       }
       operator = "/";
       lastNum = currentNum;
@@ -298,12 +297,13 @@
       }
       else if (result.toString().length > 10){
         while (result.toString().length > 10){
-          result.slice(0, -1);
+          result = result.toString().slice(0, -1);
         }
       }
       numDisplay.textContent = result;
       equationDisplay.textContent = lastNum + " " + operator + " " + currentNum;
       currentNum = result;
+      lastNum = "";
 
     }
   })

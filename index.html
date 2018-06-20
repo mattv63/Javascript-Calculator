@@ -296,9 +296,15 @@
       if (result > 9999999999){
         result = 9999999999;
       }
+      else if (result.toString().length > 10){
+        while (result.toString().length > 10){
+          result.slice(0, -1);
+        }
+      }
       numDisplay.textContent = result;
       equationDisplay.textContent = lastNum + " " + operator + " " + currentNum;
       currentNum = result;
+
     }
   })
   clear.addEventListener('click', (e) => {
